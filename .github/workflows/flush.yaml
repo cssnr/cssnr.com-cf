@@ -22,5 +22,5 @@ jobs:
         env:
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         with:
-          zone: ${{ vars.ZONE_NAME }}
+          zone: ${{ env.ZONE_NAME }}
           token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
