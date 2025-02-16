@@ -10,17 +10,17 @@ env:
   ZONE_NAME: cssnr.com
 
 jobs:
-  deploy:
-    name: "Cloudflare"
+  cache:
+    name: "Cache"
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
       - name: "Purge Cache"
-        uses: cssnr/cf-purge-cache-action@master
+        uses: cssnr/cf-purge-cache-action@v2
         if: ${{ env.CLOUDFLARE_TOKEN && env.ZONE_NAME }}
         env:
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         with:
-          zone: ${{ env.ZONE_NAME }}
+          domains: ${{ env.ZONE_NAME }}
           token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
